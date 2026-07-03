@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AirVision - Air Quality Dashboard</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <header class="main-header">
+            <div>
+                <h1 class="logo">AirVision</h1>
+                <p class="subtitle">Air Quality Analysis Dashboard</p>
+            </div>
+            <div class="header-actions">
+                <span id="update-time"> Last Updated : Live </span>
+                <button id="btn-refresh">Refresh Data</button>
+            </div>
+        </header>
+        <main class="dashboard">
+            <section class="stats-row">
+                <div class="card">
+                    <p class="card-label">Average AQI</p>
+                    <h3 id="stat-average" class="card-value font-green">--</h3>
+                </div>
+                <div class="card">
+                    <p class="card-label">Highest AQI</p>
+                    <h3 id="stat-highest" class="card-value font-red">--</h3>
+                </div>
+                <div class="card">
+                    <p class="card-label">Cleanest City</p>
+                    <h3 id="stat-cleanest" class="card-value font-blue">--</h3>
+                </div>
+                <div class="card">
+                    <p class="card-label">Most Polluted City</p>
+                    <h3 id="stat-polluted" class="card-value font-orange">--</h3>
+                </div>
+            </section>
+            <section class="charts-row">
+                <div class="card trend-box">
+                    <h4 class="card-title">City-wise AQI Comparison</h4>
+                    <div class="chart-container">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+                <div class="card breakdown-box">
+                    <h4 class="card-title">Pollutant Distribution</h4>
+                    <div class="chart-container flex-center">
+                        <canvas id="breakdownChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            <section class="card">
+                <h4 class="card-title">Search City</h4>
+                <input type="text" id="searchCity" placeholder="Enter City Name..." class="search-box" />
+            </section>
+            <br />
+            <section class="card table-box">
+                <div class="table-header">
+                    <h4 class="card-title">City Air Quality Overview</h4>
+
+                    <div class="export-btns">
+                        <button onclick="exportData('csv')" class="btn-small">Export CSV</button>
+
+                        <button onclick="exportData('json')" class="btn-small">Export JSON</button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Country</th>
+                                <th>City</th>
+                                <th>AQI</th>
+                                <th>PM2.5</th>
+                                <th>CO AQI</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <br />
+
+            <section class="card">
+                <h4 class="card-title">Air Quality Report</h4>
+
+                <div class="report-grid">
+                    <div class="report-item">
+                        <strong>Average AQI :</strong>
+                        <span id="report-average">--</span>
+                    </div>
+
+                    <div class="report-item">
+                        <strong>Highest AQI :</strong>
+                        <span id="report-highest">--</span>
+                    </div>
+
+                    <div class="report-item">
+                        <strong>Cleanest City :</strong>
+                        <span id="report-cleanest">--</span>
+                    </div>
+
+                    <div class="report-item">
+                        <strong>Most Polluted City :</strong>
+                        <span id="report-polluted">--</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="script.js"></script>
+    </body>
+</html>
