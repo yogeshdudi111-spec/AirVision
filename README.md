@@ -49,7 +49,7 @@ AirVision/
 1. Clone the repository.
 
 ```bash
-git clone https://github.com/YourUsername/AirVision.git
+git clone https://github.com/yogeshdudi111-spec/AirVision.git
 ```
 
 2. Open the project folder.
